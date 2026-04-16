@@ -11,14 +11,14 @@ namespace AutoSaveAddIn
         private Dictionary<int, string> _onOffComboboxItems = new Dictionary<int, string>
         {
             { 0, "Выкл." },
-            { 1, "Вкл." },
+            { 1, "" },
         };
 
         private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
         {
             onOffCB_LoadText();
-            checkBoxes_LoadChecked();
             saveIntervalEB_LoadText();
+            ToggleUIEnabled();
         }
 
         private void onOffCB_LoadText()
@@ -37,12 +37,6 @@ namespace AutoSaveAddIn
             }
         }
 
-        private void checkBoxes_LoadChecked()
-        { 
-            saveCurrentCB.Checked = Globals.ThisAddIn.IsCurrentSaveEnabled;
-            saveAllCB.Checked = Globals.ThisAddIn.IsAllSaveEnabled;
-        }
-
         private void saveIntervalEB_LoadText()
         {
             saveIntervalEB.Text = Globals.ThisAddIn.SaveInterval.ToString();
@@ -52,14 +46,10 @@ namespace AutoSaveAddIn
         {
             if (Globals.ThisAddIn.EnabledIndex == 0) // Если "Выкл."
             {
-                saveCurrentCB.Enabled = false;
-                saveAllCB.Enabled = false;
                 saveIntervalEB.Enabled = false;
             }
             else // Если "Вкл."
             {
-                saveCurrentCB.Enabled = true;
-                saveAllCB.Enabled = true;
                 saveIntervalEB.Enabled = true;
             }
         }
@@ -70,16 +60,6 @@ namespace AutoSaveAddIn
             Globals.ThisAddIn.EnabledIndex = _onOffComboboxItems
                 .FirstOrDefault(pair => pair.Value == selectedText).Key;
             ToggleUIEnabled();
-        }
-
-        private void saveCurrentCB_Click(object sender, RibbonControlEventArgs e)
-        {
-            Globals.ThisAddIn.IsCurrentSaveEnabled = saveCurrentCB.Checked;
-        }
-
-        private void saveAllCB_Click(object sender, RibbonControlEventArgs e)
-        {
-            Globals.ThisAddIn.IsAllSaveEnabled = saveAllCB.Checked;
         }
 
         private void saveIntervalEB_TextChanged(object sender, RibbonControlEventArgs e)

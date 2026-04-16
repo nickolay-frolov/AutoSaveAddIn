@@ -36,23 +36,19 @@
         {
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl1 = this.Factory.CreateRibbonDropDownItem();
             Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl2 = this.Factory.CreateRibbonDropDownItem();
+            Microsoft.Office.Tools.Ribbon.RibbonDropDownItem ribbonDropDownItemImpl3 = this.Factory.CreateRibbonDropDownItem();
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.onOffCB = this.Factory.CreateRibbonComboBox();
             this.saveIntervalEB = this.Factory.CreateRibbonEditBox();
-            this.group2 = this.Factory.CreateRibbonGroup();
-            this.saveCurrentCB = this.Factory.CreateRibbonCheckBox();
-            this.saveAllCB = this.Factory.CreateRibbonCheckBox();
+            this.onOffCB = this.Factory.CreateRibbonComboBox();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
-            this.group2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
             // 
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
             this.tab1.Groups.Add(this.group1);
-            this.tab1.Groups.Add(this.group2);
             this.tab1.Label = "TabAddIns";
             this.tab1.Name = "tab1";
             // 
@@ -63,42 +59,25 @@
             this.group1.Label = "Автосохранение";
             this.group1.Name = "group1";
             // 
-            // onOffCB
-            // 
-            ribbonDropDownItemImpl1.Label = "Выкл.";
-            ribbonDropDownItemImpl2.Label = "Вкл.";
-            this.onOffCB.Items.Add(ribbonDropDownItemImpl1);
-            this.onOffCB.Items.Add(ribbonDropDownItemImpl2);
-            this.onOffCB.Label = "Вкл./Выкл.";
-            this.onOffCB.Name = "onOffCB";
-            this.onOffCB.Text = null;
-            this.onOffCB.TextChanged += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.onOffCB_TextChanged);
-            // 
             // saveIntervalEB
             // 
-            this.saveIntervalEB.Label = "Время, сек";
+            this.saveIntervalEB.Label = "Таймер, сек";
             this.saveIntervalEB.Name = "saveIntervalEB";
             this.saveIntervalEB.Text = null;
             this.saveIntervalEB.TextChanged += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.saveIntervalEB_TextChanged);
             // 
-            // group2
+            // onOffCB
             // 
-            this.group2.Items.Add(this.saveCurrentCB);
-            this.group2.Items.Add(this.saveAllCB);
-            this.group2.Label = "При потере фокуса";
-            this.group2.Name = "group2";
-            // 
-            // saveCurrentCB
-            // 
-            this.saveCurrentCB.Label = "Сохранять текущий";
-            this.saveCurrentCB.Name = "saveCurrentCB";
-            this.saveCurrentCB.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.saveCurrentCB_Click);
-            // 
-            // saveAllCB
-            // 
-            this.saveAllCB.Label = "Сохранять все";
-            this.saveAllCB.Name = "saveAllCB";
-            this.saveAllCB.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.saveAllCB_Click);
+            ribbonDropDownItemImpl1.Label = "Выкл.";
+            ribbonDropDownItemImpl2.Label = "При потере фокуса";
+            ribbonDropDownItemImpl3.Label = "По таймеру";
+            this.onOffCB.Items.Add(ribbonDropDownItemImpl1);
+            this.onOffCB.Items.Add(ribbonDropDownItemImpl2);
+            this.onOffCB.Items.Add(ribbonDropDownItemImpl3);
+            this.onOffCB.Label = "Режим";
+            this.onOffCB.Name = "onOffCB";
+            this.onOffCB.Text = null;
+            this.onOffCB.TextChanged += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.onOffCB_TextChanged);
             // 
             // Ribbon1
             // 
@@ -110,8 +89,6 @@
             this.tab1.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
-            this.group2.ResumeLayout(false);
-            this.group2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -120,11 +97,8 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonComboBox onOffCB;
         internal Microsoft.Office.Tools.Ribbon.RibbonEditBox saveIntervalEB;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox saveCurrentCB;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox saveAllCB;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonComboBox onOffCB;
     }
 
     partial class ThisRibbonCollection
